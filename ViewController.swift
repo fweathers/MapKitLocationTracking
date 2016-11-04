@@ -34,6 +34,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
+        
+        //mapview setup to show user location
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.mapType = MKMapType(rawValue: 0)!
+        mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
     }
 
     private func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!){

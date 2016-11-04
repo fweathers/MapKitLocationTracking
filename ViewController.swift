@@ -24,7 +24,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.delegate = self
         
         // user activated automatic authorization info mode
-        var status = CLLocationManager.authorizationStatus()
+        let status = CLLocationManager.authorizationStatus()
         if status == .notDetermined || status == .denied || status == .authorizedWhenInUse {
             // present an alert indicating location authorization required
             // and offer to take the user to Settings for the app via
@@ -36,6 +36,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.startUpdatingHeading()
     }
 
+    private func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!){
+        
+        print("present location : (newLocation.coordinate.latitude), (newLocation.coordinate.longitude)")
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
